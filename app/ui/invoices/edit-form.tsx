@@ -11,12 +11,12 @@ import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateInvoice } from '@/app/lib/action';
 import { useFormState } from 'react-dom';
+import { State } from '@/app/lib/action';
 
-
-export default function EditInvoiceForm({ invoice, customers, }: { invoice: InvoiceForm; customers: CustomerField[]; }) {
+export default function EditInvoiceForm({ invoice, customers, }: { invoice: InvoiceForm | any; customers: CustomerField[]; }) {
   const initialState = { message: null, errors: {} };
-  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
-  const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
+  const updateInvoiceWithId: any = updateInvoice.bind(null, invoice.id);
+  const [state, dispatch] = useFormState<State>(updateInvoiceWithId, initialState);
   return (
     <form action={dispatch}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
