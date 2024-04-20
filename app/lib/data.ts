@@ -176,7 +176,7 @@ export async function fetchInvoiceById(id: string) {
 export async function fetchCustomers() {
   noStore()
   try {
-    const data = await db.$queryRaw`
+    const data:any = await db.$queryRaw`
       SELECT
         id,
         name
